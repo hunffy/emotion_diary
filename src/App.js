@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Edit from "./pages/Edit";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
-import RouteTest from "./pages/components/RouteTest";
+import RouteTest from "./components/RouteTest.js";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/edit" element={<Edit />} />
           <Route path="/new" element={<New />} />
-          <Route path="/diary" element={<Diary />} />
+          <Route path="/diary/:id" element={<Diary />} />
         </Routes>
         <RouteTest />
       </div>

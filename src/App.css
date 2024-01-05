@@ -1,3 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap");
+
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nanum Pen Script";
+  /*vh = viewport height 의 약자로 사용자가 보고있는 웹 화면의 높이로 font-size를 설정한다는 말이다.
+  ex) 사용자의 웹 화면의 높이가 800이라면 font-size도 800px
+  */
+  min-height: 100vh;
+  margin: 0px;
+}
+
+/*브라우저가 최소너비가 650px이상일때 App컴포넌트의 width 640px로 고정*/
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+/*브라우저의 최대너비가 650px 즉 너비가 650이하일때 App컴포넌트의 너비를 조정
+vw:viewport width 의 약자로 현재 보여지는 웹브라우저의 90%정도의 넓이로 설정.
+*/
+@media (max-width: 650px) {
+  .App {
+    width: 90vw;
+  }
+}
+
+#root {
+  background-color: white;
+  /*rgba : rgb는 색상 red grren blue 설정, 0.2는 투명도설정 */
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .App {
-  padding: 20px;
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
 }
