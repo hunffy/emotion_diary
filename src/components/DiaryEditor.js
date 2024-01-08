@@ -1,5 +1,5 @@
 import React, { useNavigate } from "react-router-dom";
-import { useRef, useState, useContext, useEffect } from "react";
+import { useRef, useState, useContext, useEffect, useCallback } from "react";
 import { DiaryDispatchContext } from "../App.js";
 
 import Myheader from "./Myheader";
@@ -19,9 +19,9 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const [content, setContent] = useState("");
   const contentRef = useRef();
 
-  const handleClickEmote = (emotion) => {
+  const handleClickEmote = useCallback((emotion) => {
     setEmotion(emotion);
-  };
+  }, []);
 
   //App.js의 onCreate,onEdit을 이용하여 일기작성,수정하기.
 

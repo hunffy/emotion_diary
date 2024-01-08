@@ -16,7 +16,7 @@ const filterOptionList = [
 ];
 
 //최신,오래된순 컴포넌트
-const ControlMenu = ({ value, onChange, optionList }) => {
+const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
     <select
       className="ControlMenu"
@@ -32,7 +32,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </select>
   );
-};
+});
 
 const DiaryList = ({ diaryList }) => {
   //최신,오래된순 상태
