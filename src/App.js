@@ -41,7 +41,7 @@ const reducer = (state, action) => {
 
 function App() {
   const [data, dispatch] = useReducer(reducer, dummyDate);
-  const dataID = useRef(0);
+  const dataID = useRef(6);
 
   //CREATE , EDIT , REMOVE
 

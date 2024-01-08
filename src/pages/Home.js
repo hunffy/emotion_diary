@@ -36,7 +36,10 @@ const Home = () => {
       const lastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0
+        0,
+        23,
+        59,
+        59
       ).getTime();
 
       //해당 년월에 시작일과 해당 년월에 마지막일에 포함된 요소만 저장.
