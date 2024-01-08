@@ -25,7 +25,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
 
   //App.js의 onCreate,onEdit을 이용하여 일기작성,수정하기.
 
-  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
   const handleSubmit = () => {
     if (content.length < 1) {
@@ -57,6 +57,15 @@ const DiaryEditor = ({ isEdit, originData }) => {
     }
   }, [isEdit, originData]);
 
+  //삭제버튼눌럿을때
+
+  const handleRemove = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      onRemove(originData.id);
+      navigate("/", { replace: true });
+    }
+  };
+
   return (
     <div className="DiaryEditor">
       <Myheader
@@ -68,6 +77,15 @@ const DiaryEditor = ({ isEdit, originData }) => {
               navigate(-1);
             }}
           />
+        }
+        rightChild={
+          isEdit && (
+            <MyButton
+              text={"삭제하기"}
+              type={"negative"}
+              onClick={handleRemove}
+            />
+          )
         }
       />
       <div>

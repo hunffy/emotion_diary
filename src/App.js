@@ -1,11 +1,10 @@
-import React, { useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Edit from "./pages/Edit";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
-import dummyDate from "./dummy/dummyDate.js";
 
 //state : 원래 기본 값 action: dispatch를 통해 보낸 type이나 data값
 
@@ -36,12 +35,25 @@ const reducer = (state, action) => {
       return state;
     }
   }
+  localStorage.setItem("diary", JSON.stringify(newState));
   return newState;
 };
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, dummyDate);
-  const dataID = useRef(6);
+  useEffect(() => {
+    const localData = localStorage.getItem("diary");
+    if (localData) {
+      const diaryList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id)
+      );
+      dataID.current = parseInt(diaryList[0].id) + 1;
+
+      dispatch({ type: "INIT", data: diaryList });
+    }
+  }, []);
+
+  const [data, dispatch] = useReducer(reducer, []);
+  const dataID = useRef(0);
 
   //CREATE , EDIT , REMOVE
 
