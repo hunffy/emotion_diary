@@ -1,7 +1,9 @@
+import DiaryEditor from "../components/DiaryEditor.js";
+
 const New = () => {
   return (
     <div className="New">
-      <h1>New.js</h1>
+      <DiaryEditor />
     </div>
   );
 };
