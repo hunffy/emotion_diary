@@ -42,7 +42,6 @@ const reducer = (state, action) => {
 function App() {
   const [data, dispatch] = useReducer(reducer, dummyDate);
   const dataID = useRef(0);
-  console.log(new Date().getTime());
 
   //CREATE , EDIT , REMOVE
 
