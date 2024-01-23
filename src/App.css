@@ -115,10 +115,14 @@ header button {
   display: flex;
   justify-content: space-between;
 }
+.DiaryList .menu_wrapper .left_col {
+  width: 50%;
+}
 
 .DiaryList .menu_wrapper .right_col {
   /*menuw wrapper의 남은 공간을 right_col이 다 차지한다는 뜻.*/
-  flex-grow: 1;
+  width: 50%;
+  display: flex;
 }
 
 .DiaryList .menu_wrapper .right_col button {
@@ -385,4 +389,110 @@ header button {
   font-family: "Yeon Sung";
   font-weight: 400px;
   line-height: 2.5;
+}
+
+/*todolist*/
+.todolist > h1 {
+  text-align: center;
+}
+.todo-input-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.todo-input {
+  width: 500px;
+  border-radius: 10px;
+
+  font-family: "Nanum Pen Script";
+}
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.button-wrapper button {
+  border: none;
+  background-color: white;
+}
+
+.button-wrapper .mic-image {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+}
+.add-image {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.todo-content {
+  margin-top: 50px;
+}
+
+::placeholder {
+  padding: 5px;
+  padding-left: 15px;
+
+  font-family: "Nanum Pen Script";
+}
+
+/*list 컴포넌트*/
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.list-wrapper {
+  width: 300px;
+  height: 30px;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  background-color: #9dd772;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.list-content-check {
+  text-decoration: line-through;
+  color: gray;
+  cursor: pointer;
+  width: 100%;
+
+  > span {
+    font-family: "Nanum Pen Script";
+    display: flex;
+    justify-content: center;
+
+    font-size: 20px;
+  }
+}
+.list-content {
+  margin-left: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+.list-content > span {
+  font-family: "Nanum Pen Script";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+}
+
+.delete-btn {
+  border: none;
+  margin-right: 10px;
+  background-color: #9dd772;
+  cursor: pointer;
 }

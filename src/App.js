@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Edit from "./pages/Edit";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
+import TodoList from "./pages/todoList";
 
 //state : 원래 기본 값 action: dispatch를 통해 보낸 type이나 data값
 
@@ -103,6 +104,7 @@ function App() {
               <Route path="/edit/:id" element={<Edit />} />
               <Route path="/new" element={<New />} />
               <Route path="/diary/:id" element={<Diary />} />
+              <Route path="/todolist" element={<TodoList />} />
             </Routes>
           </div>
         </BrowserRouter>

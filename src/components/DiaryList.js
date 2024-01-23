@@ -93,6 +93,12 @@ const DiaryList = ({ diaryList }) => {
               navigate("/new");
             }}
           />
+          <MyButton
+            text={"Todo List"}
+            onClick={() => {
+              navigate("/todolist");
+            }}
+          />
         </div>
       </div>
 
