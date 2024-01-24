@@ -34,7 +34,7 @@ const Diary = () => {
         navigate("/", { replace: true });
       }
     }
-  }, [id, diaryList]);
+  }, [id, diaryList, navigate]);
 
   if (!data) {
     return <div className="DiaryPage">로딩중입니다.</div>;

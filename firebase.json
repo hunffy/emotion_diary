@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "hunffy-individual-project",
+    "site": "hunffy-emotion-d",
     "public": "build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [

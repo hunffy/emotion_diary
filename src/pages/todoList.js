@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 import List from "../components/list.js";
-import SpeechToText from "../functions/speechtotext.js";
+
 import Myheader from "../components/Myheader.js";
 import MyButton from "../components/MyButton.js";
 import { useNavigate } from "react-router-dom";
 
+import useSpeechToText from "../functions/usespeechtotext.js";
+
 function TodoList() {
+  const { transcript, listening, toggleListening, resetTranscript } =
+    useSpeechToText();
   const [micOn, setMicOn] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [list, setList] = useState([]);
@@ -18,6 +22,9 @@ function TodoList() {
     setList(newList);
     localStorage.setItem("list", JSON.stringify(newList));
     setInputValue("");
+    console.log("inputvalue 는 :", inputValue);
+    toggleListening(); // 음성인식 중지
+    resetTranscript(); //transcript 초기화
   };
 
   //삭제
@@ -36,19 +43,35 @@ function TodoList() {
     localStorage.setItem("list", JSON.stringify(newList));
   };
 
-  //음성인식 textResult: 음성인식 결과값 , listening : 음성인식 중, 끝 상태 toggleListening : 음성인식버튼 토글
-  const { textResult, listening, toggleListening } = SpeechToText();
+  //마이크 클릭상태
+  const micClickHandler = () => {
+    //마이크가 켜져있을때 : 음성인식종료
+    if (micOn) {
+      toggleListening();
+      //마이크가 꺼져있을때 : 마이크상태를 on으로 바꾸고 음성인식시작
+    } else {
+      setMicOn(true);
+      toggleListening();
+    }
+  };
 
   useEffect(() => {
-    setInputValue(textResult);
-  }, [textResult]);
+    //음성인식 종료되면 transcript값을 초기화하고 마이크상태변경
+    if (!listening) {
+      resetTranscript();
+      setMicOn(false);
+    }
+  }, [listening, resetTranscript]);
+
+  useEffect(() => {
+    setInputValue(transcript);
+  }, [transcript]);
 
   //로컬스토리지
 
   //앱이 마운트 될 때 실행
   useEffect(() => {
     const savedList = JSON.parse(localStorage.getItem("list")) || [];
-    console.log("앱이 마운트 될 때 실행 :", list);
     setList(savedList);
   }, []);
 
@@ -80,19 +103,18 @@ function TodoList() {
           }}
         ></input>
         <div className="button-wrapper">
-          <button onClick={handleAddClick}>
+          <button
+            onClick={() => {
+              handleAddClick();
+            }}
+          >
             <img
               className="add-image"
               src={process.env.PUBLIC_URL + `assets/add.png`}
               alt="addimage"
             />
           </button>
-          <button
-            onClick={() => {
-              setMicOn(!micOn);
-              toggleListening();
-            }}
-          >
+          <button onClick={micClickHandler}>
             {listening ? (
               <img
                 className="mic-image"
